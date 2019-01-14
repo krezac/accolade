@@ -4,7 +4,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class PayloadInfo {
+
+	final String dateFormatPattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
+
 	private RecordStatus recordStatus;
 	private Date created;
 	private List<Date> updated;
@@ -17,6 +22,15 @@ public class PayloadInfo {
 		created = new Date();
 	}
 
+	/** for testing */
+	public PayloadInfo(RecordStatus recordStatus, Date created, List<Date> updated, Date deleted, String recordData) {
+		this.recordStatus = recordStatus;
+		this.created = created;
+		this.updated = updated;
+		this.deleted = deleted;
+		this.recordData = recordData;
+	}
+
 	public RecordStatus getRecordStatus() {
 		return recordStatus;
 	}
@@ -25,14 +39,17 @@ public class PayloadInfo {
 		this.recordStatus = recordStatus;
 	}
 
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = dateFormatPattern)
 	public Date getCreated() {
 		return created;
 	}
 
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = dateFormatPattern)
 	public List<Date> getUpdated() {
 		return updated;
 	}
 
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = dateFormatPattern)
 	public Date getDeleted() {
 		return deleted;
 	}
