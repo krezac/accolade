@@ -6,7 +6,7 @@ mvn package && java -jar target/accolade-0.1.0.jar
 ```
 if you need to specify data file 
 ```
-mvn package && java -jar -DdataFile=a.dat target/accolade-0.1.0.jar --dataFile="data3.dat"
+mvn package && java -jar target/accolade-0.1.0.jar --dataFile="data3.dat"
 ```
 
 ## Test
